@@ -1,0 +1,82 @@
+# Manipulación de datos tabulares con Pandas y Polars
+
+
+Pandas y Polars son dos librerías de Python populares para el manejo de datos tabulares, pero con diferentes fortalezas y enfoques. Vamos a comparar cómo se manejan los datos tabulares en cada una:
+
+## Pandas
+
+    Madurez y Comunidad: Pandas es una librería muy madura, con una gran comunidad y mucha documentación disponible. Esto significa que es fácil encontrar soluciones a problemas comunes y hay muchos ejemplos y tutoriales disponibles.
+    Flexibilidad: Pandas ofrece una gran flexibilidad en cuanto al tipo de datos que puede manejar. Puedes tener columnas con diferentes tipos de datos mezclados en un mismo DataFrame. Es muy tolerante a datos desordenados o con inconsistencias.
+    Funcionalidades: Pandas tiene una amplia gama de funciones para manipular datos, incluyendo:
+        Lectura y escritura de datos: Desde archivos CSV, Excel, bases de datos, etc. (read_csv, read_excel, to_csv, etc.)
+        Selección de datos: Acceso a filas y columnas utilizando índices, etiquetas, boolean indexing, loc e iloc.
+        Manipulación de datos: Filtrado, ordenamiento, agregación (groupby, agg, sum, mean, count, etc.), pivoteado (pivot_table), fusión de DataFrames (merge, join), reemplazo de valores (replace, fillna), etc.
+        Análisis de datos: Calculo de estadísticas descriptivas, correlación, etc.
+    Rendimiento: Pandas es generalmente más lento que Polars, especialmente para conjuntos de datos muy grandes. Esto se debe a que se basa en NumPy, que no está optimizado para la paralelización en la misma medida que Polars.
+    Aprendizaje: La curva de aprendizaje puede ser relativamente suave al inicio, pero se vuelve más compleja a medida que exploras funciones más avanzadas.
+
+Ejemplo Pandas:
+
+```{python}
+import pandas as pd
+
+# Leer datos de un archivo CSV
+data = pd.read_csv("mi_archivo.csv")
+
+# Filtrar datos
+filtered_data = data[data["Precio"] > 100]
+
+# Calcular la media de una columna
+media_precio = filtered_data["Precio"].mean()
+
+# Agregar una nueva columna
+filtered_data["Descuento"] = filtered_data["Precio"] * 0.1
+
+print(filtered_data)
+```
+
+## Polars
+
+    Rendimiento: Polars está diseñado para ser significativamente más rápido que Pandas, especialmente con grandes conjuntos de datos. Utiliza una arquitectura basada en expresiones que permite la paralelización eficiente.
+    Tipo de datos: Es más estricto con los tipos de datos. Cada columna debe tener un tipo de dato definido.
+    Sintaxis: La sintaxis puede parecer más concisa y moderna que Pandas en algunas operaciones, pero también puede ser un poco más abrupta para aquellos que vienen de Pandas.
+    Funcionalidades: Ofrece muchas funciones similares a Pandas para manipular datos, pero con un enfoque en la eficiencia. Su API es más funcional.
+    Madurez: Si bien Polars está ganando popularidad rápidamente, sigue siendo una librería más nueva que Pandas, lo que significa que puede haber menos recursos disponibles para resolver problemas específicos.
+    Integración: Se integra bien con otras librerías de la comunidad de datos de Python.
+
+Ejemplo Polars:
+
+```{python}
+import polars as pl
+
+# Leer datos de un archivo CSV
+df = pl.read_csv("mi_archivo.csv")
+
+# Filtrar datos
+filtered_df = df.filter(pl.col("Precio") > 100)
+
+# Calcular la media de una columna
+media_precio = filtered_df["Precio"].mean()
+
+# Agregar una nueva columna
+filtered_df = filtered_df.with_columns(pl.col("Precio") * 0.1).alias("Descuento")
+
+print(filtered_df)
+```
+
+En resumen:
+
+| Característica | Pandas | Polars |
+|---|---|---|
+| Madurez | Alta | Media |
+| Rendimiento | Bajo (para datos grandes) | Alto |
+| Flexibilidad | Alta | Media |
+| Curva de Aprendizaje | Suave inicialmente | Más pronunciada inicialmente |
+| Comunidad | Muy grande | Creciendo rápidamente |
+
+## ¿Cuál elegir?
+
+    Pandas: Es una buena opción si necesitas una librería madura, con una gran comunidad y mucha documentación, y la velocidad no es tu principal preocupación. También es ideal si trabajas con datos desordenados o inconsistentes.
+    Polars: Es una excelente opción si el rendimiento es crítico, especialmente para conjuntos de datos muy grandes. Si la velocidad es prioritaria, Polars es la mejor opción.
+
+Para conjuntos de datos pequeños o medianos, la diferencia de rendimiento puede no ser significativa, y la elección puede depender más de tus preferencias personales y familiaridad con las APIs de cada librería.

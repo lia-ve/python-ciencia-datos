@@ -1,0 +1,138 @@
+# Datos tabulares y jerárquicos
+
+## # Datos tabulares
+Imagina que tienes un montón de información, como una lista de tus películas favoritas o los ingredientes de una receta.  Una tabla es una forma de organizar esa información para que sea fácil de leer y entender.   
+  Piensa en ella como si fuera una cuadrícula con filas y columnas. Cada fila es como un elemento distinto de la lista, y cada columna es una información diferente sobre ese elemento.   
+  Por ejemplo, si hicieras una tabla con tus películas favoritas, podrías tener:  
+   Fila 1: «El Rey León»  
+   Fila 2: «Moana»  
+   Fila 3: «Toy Story»  
+  Y luego podrías tener columnas para cosas como:  
+   Columna 1: Título de la película  
+   Columna 2: Año de estreno  
+   Columna 3: Género  
+  Entonces tu tabla se vería así:
+
+  | Título de la película Año de estreno Género  
+  |---|---|---|  
+  | El Rey León 1994 Animada  
+  | Moana 2016 Animada  
+  | Toy Story 1995 Animada  
+  Así es fácil ver toda la información sobre cada película de un vistazo.   
+  Las tablas se utilizan constantemente en libros, páginas web e incluso hojas de cálculo. Son una forma estupenda de organizar la información y facilitar su comprensión.
+
+ Imaginemos que tienes una hoja de cálculo de Excel o una tabla en una base de datos. Esa es esencialmente la idea detrás de los datos tabulares.
+
+¿Qué son los datos tabulares?
+
+Los datos tabulares son una forma de organizar información en filas y columnas. Cada fila representa un registro o una observación individual, y cada columna representa un atributo o variable de esos registros. Piensa en una tabla como una cuadrícula donde la intersección de una fila y una columna contiene un dato específico.
+
+Componentes clave:
+
+* Filas (Registros o Observaciones): Cada fila representa una instancia única de los datos. Por ejemplo, en una tabla de clientes, cada fila representaría un cliente individual.
+* Columnas (Atributos o Variables): Cada columna representa una característica o propiedad específica de los registros. En la tabla de clientes, podrías tener columnas como "Nombre", "Apellido", "Dirección", "Teléfono", etc.
+* Celdas: La intersección de una fila y una columna. Cada celda contiene un valor único que corresponde a un atributo específico de un registro específico.
+* Encabezados de columna: La primera fila de la tabla, que normalmente contiene los nombres de las columnas y describe qué tipo de datos contiene cada una.
+
+
+Ejemplos concretos:
+
+* Hoja de cálculo de Excel: Una hoja de cálculo es un ejemplo clásico de datos tabulares.
+* Tabla de una base de datos: Las bases de datos relacionales almacenan información en tablas.
+* Archivo CSV (Comma Separated Values): Un archivo de texto plano donde los valores se separan por comas. Es una forma común de representar datos tabulares.
+* Archivo TSV (Tab Separated Values): Similar al CSV, pero los valores se separan por tabulaciones.
+
+
+¿Por qué son importantes los datos tabulares?
+
+* Organización y visualización simple: Son fáciles de entender y visualizar.
+* Análisis de datos: Son ideales para el análisis estadístico y la creación de gráficos. La mayoría de las herramientas de análisis de datos están diseñadas para trabajar con datos tabulares.
+* Interoperabilidad: Los formatos de datos tabulares (como CSV) son ampliamente compatibles entre diferentes sistemas y aplicaciones.
+* Almacenamiento y gestión eficiente: Son relativamente fáciles de almacenar y gestionar en bases de datos o archivos.
+
+
+Tipos de datos en las columnas:
+
+Las columnas pueden contener diferentes tipos de datos:
+
+* Numéricos: Números enteros o decimales (ej: edad, precio).
+* Categóricos: Valores que representan categorías o grupos (ej: color, género, país).
+* Texto: Cadena de caracteres (ej: nombre, dirección).
+* Booleanos: Valores verdadero o falso (ej: suscrito, activo).
+* Fechas: Representan fechas y horas.
+
+
+Ejemplo simple (imaginemos una tabla de productos):
+
+Nombre del Producto | Precio | Categoría | En Stock
+--------------------|--------|-----------|---------
+Camiseta Azul       | 15.99 | Ropa      | Sí
+Pantalón Negro      | 29.99 | Ropa      | No
+Laptop Gamer        | 1200.00| Electrónica| Sí
+
+
+Aquí, cada fila representa un producto, y las columnas describen sus atributos.
+
+
+Esta es una introducción a los datos tabulares. Como puedes ver, son una forma fundamental de organizar y representar información en muchos contextos. 
+
+
+## Datos Jerárquicos
+
+Imaginemos que estás organizando una biblioteca. No solo tienes libros, sino que también los clasificas por autor, género, tema, etc. Esa organización en niveles, donde unos elementos contienen a otros, es la idea principal detrás de los datos jerárquicos.
+
+¿Qué son los datos jerárquicos?
+
+Los datos jerárquicos son una forma de organizar información en una estructura de árbol, con niveles anidados. Piensa en un árbol genealógico: tienes una raíz (un ancestro común), luego sus hijos, luego los nietos, y así sucesivamente. Cada nivel representa una categoría o un grupo, y los elementos de un nivel están relacionados con los elementos del nivel superior e inferior.
+
+Componentes clave:
+
+* Raíz: El nodo superior del árbol, el elemento más general que contiene a todos los demás. En nuestro ejemplo de la biblioteca, podría ser la biblioteca misma.
+* Nodos: Cada elemento dentro del árbol se llama nodo. Pueden ser nodos padres (que contienen otros nodos) o nodos hijos (contenidos dentro de otros nodos). Los libros serían nodos hijos de "Autores", "Géneros", etc.
+* Ramas: La conexión entre un nodo padre y sus nodos hijos.
+* Hojas: Los nodos que no tienen hijos. En la biblioteca, los libros individuales serían hojas.
+
+
+Ejemplos concretos:
+
+* Organización de archivos en una computadora: El disco duro es la raíz, luego las carpetas (nodos padres), y dentro de ellas, los archivos (hojas).
+* Categorías de productos en una tienda en línea: La tienda es la raíz, luego las categorías principales (ropa, electrónica, etc.), subcategorías (camisetas, pantalones, etc.), y finalmente, los productos individuales.
+* Clasificación biológica: Reinos, filos, clases, órdenes, familias, géneros y especies. Cada nivel clasifica a los organismos de forma más específica.
+
+
+¿Por qué son importantes los datos jerárquicos?
+
+* Organización eficiente: Permiten organizar grandes cantidades de información de forma lógica y accesible.
+* Análisis complejo: Facilitan análisis que consideran las relaciones entre diferentes niveles de la jerarquía. Por ejemplo, podrías analizar las ventas de libros por género o por autor.
+* Modelado de sistemas complejos: Se utilizan para modelar sistemas reales que tienen una estructura jerárquica, como organizaciones empresariales o redes sociales.
+
+
+Representación de datos jerárquicos:
+
+Hay varias maneras de representar datos jerárquicos:
+
+* Árbol: Una representación visual, ideal para entender la estructura.
+* Matrices: Se puede utilizar una matriz para representar la relación entre padres e hijos.
+* Listas anidadas: Una estructura de datos donde una lista puede contener otras listas. En Python, esto se puede lograr con listas dentro de listas.
+
+
+Ejemplo en Python con listas anidadas (representando la biblioteca):
+
+```
+biblioteca = [
+    {"nombre": "Ficción", "libros": [
+        {"titulo": "El Hobbit", "autor": "J.R.R. Tolkien"},
+        {"titulo": "1984", "autor": "George Orwell"}
+    ]},
+    {"nombre": "Ciencia Ficción", "libros": [
+        {"titulo": "Fundación", "autor": "Isaac Asimov"},
+        {"titulo": "Dune", "autor": "Frank Herbert"}
+    ]}
+]
+
+print(biblioteca[0]["libros"][0]["titulo"]) # Imprime: El Hobbit
+```
+
+En este ejemplo, `biblioteca` es la raíz. "Ficción" y "Ciencia Ficción" son nodos padres, y cada libro es una hoja.
+
+Este es un comienzo. Hay muchos métodos sofisticados para trabajar con datos jerárquicos, incluyendo algoritmos específicos y librerías en diferentes lenguajes de programación. Pero esta introducción te da una base sólida para entender el concepto.

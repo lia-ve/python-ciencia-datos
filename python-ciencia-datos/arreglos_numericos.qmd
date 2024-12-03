@@ -1,0 +1,104 @@
+# Arreglos numéricos y operaciones vectorizadas con NumPy
+
+NumPy es una librería fundamental en Python para la computación científica, y su potencia reside en gran parte en la forma en que maneja los arreglos numéricos y las operaciones vectorizadas. Vamos a explorarlos en detalle:
+
+1. Arreglos NumPy (ndarrays):
+
+Un ndarray (N-dimensional array) es el objeto central de NumPy. Es una estructura de datos que almacena una colección de elementos del mismo tipo de datos (tipo homogéneo) en una grilla multidimensional. A diferencia de las listas de Python, que pueden contener elementos de diferentes tipos, los ndarrays son mucho más eficientes para operaciones matemáticas porque todos los elementos son del mismo tipo.
+
+    Ventajas sobre las listas de Python:
+        Eficiencia: Las operaciones sobre ndarrays son significativamente más rápidas que las operaciones equivalentes sobre listas de Python, especialmente para arreglos grandes. Esto se debe a que los ndarrays están implementados en C y Fortran, lenguajes optimizados para la computación numérica.
+        Vectorización: Permite realizar operaciones vectorizadas, aplicando una operación a todos los elementos del array simultáneamente, en lugar de iterar elemento por elemento (lo que sería mucho más lento).
+        Funcionalidades: NumPy proporciona una amplia gama de funciones para manipular y operar con ndarrays, incluyendo funciones matemáticas, estadísticas, algebraicas lineales, etc.
+        Consistencia de tipos: Al tener un tipo de datos homogéneo, NumPy optimiza el almacenamiento y las operaciones.
+
+    Creación de ndarrays:
+
+Hay varias formas de crear ndarrays:
+
+```{python}
+import numpy as np
+
+# Desde una lista:
+arr1 = np.array([1, 2, 3, 4, 5]) # Array unidimensional
+arr2 = np.array([[1, 2, 3], [4, 5, 6]]) # Array bidimensional (matriz)
+
+# Con valores predefinidos:
+arr3 = np.zeros((3, 4)) # Array de ceros (3 filas, 4 columnas)
+arr4 = np.ones((2, 2))   # Array de unos
+arr5 = np.full((2, 3), 7) # Array lleno con el valor 7
+arr6 = np.arange(10)      # Array con números del 0 al 9
+arr7 = np.linspace(0, 1, 5) # Array con 5 números espaciados uniformemente entre 0 y 1
+arr8 = np.random.rand(3, 2) # Array con números aleatorios entre 0 y 1
+
+# Especificando el tipo de dato:
+arr9 = np.array([1, 2, 3], dtype=np.float64) # Array de flotantes de 64 bits
+
+print(arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, sep="\n\n")
+
+    Atributos importantes:
+        shape: Devuelve la forma del array (dimensiones). Ejemplo: arr2.shape devolvería (2, 3).
+        dtype: Devuelve el tipo de datos de los elementos del array. Ejemplo: arr1.dtype podría devolver int64.
+        ndim: Devuelve el número de dimensiones del array.
+        size: Devuelve el número total de elementos del array.
+```
+
+2. Operaciones Vectorizadas:
+
+La principal ventaja de los ndarrays es la capacidad de realizar operaciones vectorizadas. Esto significa que las operaciones se aplican a todo el array simultáneamente, sin necesidad de bucles explícitos.
+
+    Operaciones aritméticas:
+```{python}
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+c = a + b       # Suma elemento a elemento
+d = a - b       # Resta
+e = a * b       # Multiplicación
+f = a / b       # División
+g = a ** 2      # Potencia
+
+print(c, d, e, f, g, sep="\n")
+
+    Operaciones con escalares:
+
+a = np.array([1, 2, 3])
+x = 2
+
+b = a + x # Suma un escalar a cada elemento
+c = a * x # Multiplica cada elemento por un escalar
+
+print(b, c, sep="\n")
+```
+    Operaciones con funciones universales (ufuncs):
+
+NumPy proporciona un conjunto de funciones universales (ufuncs) que operan elemento a elemento sobre arrays. Ejemplos: np.sin, np.cos, np.exp, np.log, etc.
+
+```{python}
+a = np.array([0, np.pi/2, np.pi])
+b = np.sin(a) # Aplica la función seno a cada elemento
+print(b)
+```
+
+    Indexación y slicing:
+
+El acceso a elementos individuales o subconjuntos de un array se hace mediante indexación y slicing, similar a las listas de Python, pero con mayor potencia para arrays multidimensionales.
+
+3. Broadcasting:
+
+Broadcasting es una regla que permite realizar operaciones entre arrays de diferentes formas, siempre que las formas sean compatibles. NumPy intenta "estirar" el array más pequeño para que coincida con el tamaño del array más grande, aplicando la operación elemento a elemento.
+
+Ejemplo de Broadcasting:
+
+```{python}
+a = np.array([[1, 2, 3], [4, 5, 6]])
+b = np.array([10, 20, 30])
+
+c = a + b # b se "estira" para que tenga la misma forma que a
+
+print(c)
+```
+
+En este ejemplo, b se extiende implícitamente para convertirse en [[10, 20, 30], [10, 20, 30]] antes de la suma.
+
+En resumen, los arreglos NumPy y las operaciones vectorizadas son esenciales para la eficiencia en la computación numérica con Python. La comprensión de estos conceptos es fundamental para aprovechar al máximo las capacidades de NumPy en el análisis de datos y la ciencia de datos en general.

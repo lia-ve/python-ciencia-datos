@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Introducción a Python para Ciencia de Datos"
+  author: "Anavelyz Perez"
+  date: "11/19/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - datos_tabulares_jerarquicos.qmd
+    - datos_tabulares_pd_po.qmd
+    - datos_jerarquicos_json_xml.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+execute:
+  echo: false
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

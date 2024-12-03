@@ -1,0 +1,129 @@
+# Manejo de datos Jerárquicos con JSON y XML
+
+Vamos a explorar cómo manejar datos jerárquicos con JSON y XML. Ambos formatos son excelentes para representar datos con estructuras anidadas, pero tienen diferentes enfoques y sintaxis.
+
+JSON (JavaScript Object Notation):
+
+JSON es un formato de texto ligero, fácil de leer y escribir tanto para humanos como para máquinas. Es ampliamente utilizado para el intercambio de datos en internet y en aplicaciones web. En JSON, la jerarquía se representa mediante objetos anidados y arrays.
+
+Estructura:
+
+* Objetos: Representados por llaves `{}`, contienen pares clave-valor. Las claves son cadenas de texto entre comillas, y los valores pueden ser primitivos (números, cadenas, booleanos, nulos) u otros objetos o arrays.
+* Arrays: Representados por corchetes `[]`, son listas ordenadas de valores. Los valores de un array pueden ser primitivos u otros objetos o arrays.
+
+Ejemplo:
+```{json}
+{
+  "nombre": "Biblioteca",
+  "secciones": [
+    {
+      "nombre": "Ficción",
+      "libros": [
+        {"titulo": "El Hobbit", "autor": "J.R.R. Tolkien"},
+        {"titulo": "1984", "autor": "George Orwell"}
+      ]
+    },
+    {
+      "nombre": "Ciencia Ficción",
+      "libros": [
+        {"titulo": "Fundación", "autor": "Isaac Asimov"},
+        {"titulo": "Dune", "autor": "Frank Herbert"}
+      ]
+    }
+  ]
+}
+```
+
+En este ejemplo, "Biblioteca" es la raíz. "Secciones" es un array que contiene objetos "Ficción" y "Ciencia Ficción", cada uno con un array de objetos "libros".
+
+
+Manejo de JSON en Python:
+
+La librería `json` de Python facilita el manejo de datos JSON.
+
+```{python}
+import json
+
+with open("biblioteca.json", "r") as f:
+    datos_biblioteca = json.load(f)
+
+print(datos_biblioteca["secciones"][0]["libros"][0]["titulo"]) # Imprime: El Hobbit
+
+for seccion in datos_biblioteca["secciones"]:
+    print(f"Sección: {seccion['nombre']}")
+    for libro in seccion["libros"]:
+        print(f" - {libro['titulo']} por {libro['autor']}")
+```
+
+
+XML (Extensible Markup Language):
+
+XML es un formato de marcado más complejo que JSON. Se utiliza para representar datos estructurados, y es más verboso que JSON. La jerarquía se representa mediante etiquetas de apertura y cierre.
+
+Estructura:
+
+* Elementos: Los datos se representan mediante elementos, encerrados entre etiquetas de apertura (`<elemento>`) y cierre (`</elemento>`).
+* Atributos: Los elementos pueden tener atributos, pares clave-valor dentro de la etiqueta de apertura.
+* Nodos: Cada elemento es un nodo en el árbol jerárquico.
+
+
+Ejemplo:
+
+```{xml}
+<biblioteca>
+  <seccion nombre="Ficción">
+    <libro>
+      <titulo>El Hobbit</titulo>
+      <autor>J.R.R. Tolkien</autor>
+    </libro>
+    <libro>
+      <titulo>1984</titulo>
+      <autor>George Orwell</autor>
+    </libro>
+  </seccion>
+  <seccion nombre="Ciencia Ficción">
+    <libro>
+      <titulo>Fundación</titulo>
+      <autor>Isaac Asimov</autor>
+    </libro>
+    <libro>
+      <titulo>Dune</titulo>
+      <autor>Frank Herbert</autor>
+    </libro>
+  </seccion>
+</biblioteca>
+```
+
+
+Manejo de XML en Python:
+
+Se puede utilizar la librería `xml.etree.ElementTree` para parsear XML.
+
+```{python}
+import xml.etree.ElementTree as ET
+
+tree = ET.parse("biblioteca.xml")
+root = tree.getroot()
+
+for seccion in root.findall("seccion"):
+    nombre_seccion = seccion.get("nombre")
+    print(f"Sección: {nombre_seccion}")
+    for libro in seccion.findall("libro"):
+        titulo = libro.find("titulo").text
+        autor = libro.find("autor").text
+        print(f" - {titulo} por {autor}")
+```
+
+
+Comparación:
+
+| Característica | JSON | XML |
+|---|---|---|
+| Simplicidad | Alto | Bajo |
+| Verbosidad | Bajo | Alto |
+| Legibilidad | Alto | Medio |
+| Rendimiento | Generalmente más rápido | Generalmente más lento |
+| Uso común | Intercambio de datos web | Configuración de aplicaciones, documentos estructurados |
+
+
+En general, JSON es preferido para el intercambio de datos debido a su simplicidad y eficiencia. XML puede ser más adecuado para situaciones que requieren una mayor estructura y capacidad de extensión, como la definición de esquemas de datos complejos. La elección dependerá de tus necesidades específicas.
