@@ -5,6 +5,12 @@ book:
   title: "Introducción a Python para Ciencia de Datos"
   author: "Anavelyz Perez"
   date: "11/19/2024"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - about.qmd
+    search: true
   chapters:
     - index.qmd
     - intro.qmd
@@ -15,13 +21,12 @@ book:
     - references.qmd
 
 bibliography: references.bib
-execute:
-  echo: false
+
 format:
   html:
-    theme: cosmo
-  pdf:
-    documentclass: scrreprt
+    css: styles.css
+    toc: true
+    lang: es
 
 
 
